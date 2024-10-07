@@ -5,6 +5,7 @@ const BaseConfig = {
         caseSensitive: false
     },
     encoding: "utf-8",
+    timeWarning: 5,
     directoryExceptions: [
         "vendor",
         "node_modules",
@@ -14,7 +15,7 @@ const BaseConfig = {
         "Migrations"
     ],
     fileExceptions: [
-        
+        //
     ]
 };
 

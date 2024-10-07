@@ -1,7 +1,7 @@
 enum Priority {
-    Low,
-    Medium,
-    High
+    Low = 'low',
+    Medium = 'medium',
+    High = 'high'
 }
 
 export default Priority;

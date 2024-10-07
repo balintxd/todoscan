@@ -1,5 +1,6 @@
 import Priority from "../enums/Priority.js";
 import ITodo from "../interfaces/ITodo.js";
+import chalk from 'chalk';
 
 export default class Todo implements ITodo {
     path: string;
@@ -20,7 +21,11 @@ export default class Todo implements ITodo {
     }
 
     toString() {
-        return `${this.path} [${this.line}]: ${this.content}`;
+        let content = this.content;
+        content = content.replace('@prio=low', chalk.gray('@prio=low'));
+        content = content.replace('@prio=med', chalk.red('@prio=med'));
+        content = content.replace('@prio=high', chalk.redBright('@prio=high'));
+        return `${this.path} [${this.line}]: ${content}`;
     }
 
     private determinePriority(): void {
@@ -29,10 +34,15 @@ export default class Todo implements ITodo {
             switch (match[1].toLowerCase()) {
                 case 'low':
                     this.priority = Priority.Low;
+                    break;
                 case 'medium':
                     this.priority = Priority.Medium;
+                    break;
                 case 'high':
                     this.priority = Priority.High;
+                    break;
+                default:
+                    console.warn(`Unknown priority level "${match[1]}" in ${this.toString()}`);
             }
         }
     }
