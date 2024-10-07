@@ -2,9 +2,9 @@ import fs from 'graceful-fs';
 import path from 'path';
 import * as commander from 'commander';
 import Todo from './classes/Todo.js';
-import baseConfig from './.todoscan.json' assert { type: 'json' };
+import BaseConfig from './BaseConfig.js';
 
-let config = baseConfig;
+let config = BaseConfig;
 
 async function scanDirectory(directory: string): Promise<Todo[]> {
     let results: Todo[] = [];
